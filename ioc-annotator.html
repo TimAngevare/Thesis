@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoC Annotation Tool - Ground Truth Dataset Creator</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: #4ade80;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .annotation-panel {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .message-display {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 300px;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #334155;
+            user-select: text;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .message-display.selecting {
+            cursor: text;
+        }
+
+        .entity-highlight {
+            padding: 2px 4px;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .entity-highlight:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .entity-EMAIL { background: #dbeafe; border-bottom: 2px solid #3b82f6; }
+        .entity-BTC { background: #fef3c7; border-bottom: 2px solid #f59e0b; }
+        .entity-IP { background: #e0e7ff; border-bottom: 2px solid #6366f1; }
+        .entity-LOCATION { background: #dcfce7; border-bottom: 2px solid #22c55e; }
+        .entity-PERSON { background: #fce7f3; border-bottom: 2px solid #ec4899; }
+        .entity-PHONE { background: #e9d5ff; border-bottom: 2px solid #a855f7; }
+        .entity-USER_ACCOUNT { background: #ffedd5; border-bottom: 2px solid #f97316; }
+        .entity-WEB_RESOURCE { background: #cffafe; border-bottom: 2px solid #06b6d4; }
+
+        .entity-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .entity-type-btn {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .entity-type-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .entity-type-btn.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .entity-type-btn .shortcut {
+            margin-left: auto;
+            font-size: 11px;
+            opacity: 0.7;
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .annotated-entities {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .entity-item {
+            background: white;
+            border-left: 4px solid;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .entity-item .text {
+            font-weight: 500;
+            margin-bottom: 4px;
+            word-break: break-all;
+        }
+
+        .entity-item .meta {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .file-input-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: block;
+            padding: 12px;
+            background: white;
+            border: 2px dashed #cbd5e1;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .file-label:hover {
+            border-color: #667eea;
+            background: #f8fafc;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .instructions {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .instructions strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #92400e;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const ENTITY_TYPES = [
+            { name: 'EMAIL', color: '#3b82f6', shortcut: '1' },
+            { name: 'BTC', color: '#f59e0b', shortcut: '2' },
+            { name: 'IP', color: '#6366f1', shortcut: '3' },
+            { name: 'LOCATION', color: '#22c55e', shortcut: '4' },
+            { name: 'PERSON', color: '#ec4899', shortcut: '5' },
+            { name: 'PHONE', color: '#a855f7', shortcut: '6' },
+            { name: 'USER_ACCOUNT', color: '#f97316', shortcut: '7' },
+            { name: 'WEB_RESOURCE', color: '#06b6d4', shortcut: '8' }
+        ];
+
+        function AnnotationTool() {
+            const [messages, setMessages] = useState([]);
+            const [currentIndex, setCurrentIndex] = useState(0);
+            const [annotations, setAnnotations] = useState({});
+            const [selectedType, setSelectedType] = useState('EMAIL');
+            const [selectedText, setSelectedText] = useState(null);
+            const [lastSaved, setLastSaved] = useState(null);
+            const messageRef = useRef(null);
+
+            // Load from localStorage on mount
+            useEffect(() => {
+                const saved = localStorage.getItem('ioc_annotations');
+                if (saved) {
+                    try {
+                        const data = JSON.parse(saved);
+                        setAnnotations(data);
+                        setLastSaved(new Date().toLocaleTimeString());
+                    } catch (e) {
+                        console.error('Failed to load annotations:', e);
+                    }
+                }
+            }, []);
+
+            // Save to localStorage whenever annotations change
+            useEffect(() => {
+                if (Object.keys(annotations).length > 0) {
+                    localStorage.setItem('ioc_annotations', JSON.stringify(annotations));
+                    setLastSaved(new Date().toLocaleTimeString());
+                }
+            }, [annotations]);
+
+            // Keyboard shortcuts
+            useEffect(() => {
+                const handleKeyPress = (e) => {
+                    // Number keys for entity types
+                    const num = parseInt(e.key);
+                    if (num >= 1 && num <= 8) {
+                        setSelectedType(ENTITY_TYPES[num - 1].name);
+                        e.preventDefault();
+                    }
+                    
+                    // Arrow keys for navigation
+                    if (e.key === 'ArrowRight' && !e.ctrlKey) {
+                        handleNext();
+                    } else if (e.key === 'ArrowLeft' && !e.ctrlKey) {
+                        handlePrevious();
+                    }
+                };
+
+                window.addEventListener('keydown', handleKeyPress);
+                return () => window.removeEventListener('keydown', handleKeyPress);
+            }, [currentIndex, messages]);
+
+            const handleFileLoad = (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const content = e.target.result;
+                        let data;
+
+                        if (file.name.endsWith('.json')) {
+                            data = JSON.parse(content);
+                        } else if (file.name.endsWith('.csv')) {
+                            // Simple CSV parsing
+                            const lines = content.split('\n');
+                            const headers = lines[0].split(',');
+                            data = lines.slice(1).filter(line => line.trim()).map((line, idx) => {
+                                return {
+                                    id: idx,
+                                    text: line.split(',')[0] || line // Assumes text is first column
+                                };
+                            });
+                        }
+
+                        if (Array.isArray(data)) {
+                            setMessages(data);
+                            setCurrentIndex(0);
+                        } else {
+                            alert('Invalid file format. Expected array of messages.');
+                        }
+                    } catch (error) {
+                        alert('Error loading file: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+
+            const handleTextSelection = () => {
+                const selection = window.getSelection();
+                const text = selection.toString().trim();
+                
+                if (!text || !selectedType) return;
+
+                const range = selection.getRangeAt(0);
+                const messageElement = messageRef.current;
+                
+                if (!messageElement.contains(range.commonAncestorContainer)) {
+                    return;
+                }
+
+                // Calculate position relative to the full text
+                const preSelectionRange = range.cloneRange();
+                preSelectionRange.selectNodeContents(messageElement);
+                preSelectionRange.setEnd(range.startContainer, range.startOffset);
+                const start = preSelectionRange.toString().length;
+                const end = start + text.length;
+
+                addAnnotation(text, selectedType, start, end);
+                selection.removeAllRanges();
+            };
+
+            const addAnnotation = (text, type, start_pos, end_pos) => {
+                const messageId = messages[currentIndex]?.id || currentIndex;
+                const currentAnnotations = annotations[messageId] || [];
+
+                // Check for overlaps
+                const hasOverlap = currentAnnotations.some(ann => 
+                    (start_pos >= ann.start_pos && start_pos < ann.end_pos) ||
+                    (end_pos > ann.start_pos && end_pos <= ann.end_pos) ||
+                    (start_pos <= ann.start_pos && end_pos >= ann.end_pos)
+                );
+
+                if (hasOverlap) {
+                    if (!confirm('This overlaps with an existing annotation. Continue?')) {
+                        return;
+                    }
+                }
+
+                const newAnnotation = {
+                    text,
+                    type,
+                    start_pos,
+                    end_pos
+                };
+
+                setAnnotations({
+                    ...annotations,
+                    [messageId]: [...currentAnnotations, newAnnotation].sort((a, b) => a.start_pos - b.start_pos)
+                });
+            };
+
+            const deleteAnnotation = (index) => {
+                const messageId = messages[currentIndex]?.id || currentIndex;
+                const currentAnnotations = annotations[messageId] || [];
+                
+                setAnnotations({
+                    ...annotations,
+                    [messageId]: currentAnnotations.filter((_, i) => i !== index)
+                });
+            };
+
+            const handleNext = () => {
+                if (currentIndex < messages.length - 1) {
+                    setCurrentIndex(currentIndex + 1);
+                }
+            };
+
+            const handlePrevious = () => {
+                if (currentIndex > 0) {
+                    setCurrentIndex(currentIndex - 1);
+                }
+            };
+
+            const exportAnnotations = () => {
+                const exportData = messages.map((msg, idx) => ({
+                    message_id: msg.id || idx,
+                    text: msg.text,
+                    entities: annotations[msg.id || idx] || []
+                }));
+
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ioc_annotations_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+            };
+
+            const importAnnotations = (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        
+                        // Convert exported format back to internal format
+                        const importedAnnotations = {};
+                        data.forEach(item => {
+                            importedAnnotations[item.message_id] = item.entities;
+                        });
+                        
+                        if (confirm(`Import ${Object.keys(importedAnnotations).length} annotated messages? This will merge with existing annotations.`)) {
+                            setAnnotations({
+                                ...annotations,
+                                ...importedAnnotations
+                            });
+                            alert('✅ Annotations imported successfully!');
+                        }
+                    } catch (error) {
+                        alert('Error importing annotations: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+
+            const clearAllData = () => {
+                if (confirm('⚠️ This will delete ALL annotations. Are you sure?')) {
+                    if (confirm('Really sure? This cannot be undone!')) {
+                        setAnnotations({});
+                        localStorage.removeItem('ioc_annotations');
+                        alert('All annotations cleared.');
+                    }
+                }
+            };
+
+            const renderMessageWithHighlights = () => {
+                if (!messages[currentIndex]) return '';
+
+                const messageId = messages[currentIndex]?.id || currentIndex;
+                const text = messages[currentIndex].text;
+                const currentAnnotations = annotations[messageId] || [];
+
+                if (currentAnnotations.length === 0) {
+                    return text;
+                }
+
+                const parts = [];
+                let lastIndex = 0;
+
+                currentAnnotations.forEach((ann, idx) => {
+                    // Add text before annotation
+                    if (ann.start_pos > lastIndex) {
+                        parts.push(
+                            <span key={`text-${idx}`}>
+                                {text.substring(lastIndex, ann.start_pos)}
+                            </span>
+                        );
+                    }
+
+                    // Add annotated text
+                    parts.push(
+                        <span
+                            key={`ann-${idx}`}
+                            className={`entity-highlight entity-${ann.type}`}
+                            onClick={() => deleteAnnotation(idx)}
+                            title={`${ann.type} - Click to delete`}
+                        >
+                            {ann.text}
+                        </span>
+                    );
+
+                    lastIndex = ann.end_pos;
+                });
+
+                // Add remaining text
+                if (lastIndex < text.length) {
+                    parts.push(
+                        <span key="text-end">
+                            {text.substring(lastIndex)}
+                        </span>
+                    );
+                }
+
+                return parts;
+            };
+
+            const currentMessage = messages[currentIndex];
+            const messageId = currentMessage?.id || currentIndex;
+            const currentAnnotations = annotations[messageId] || [];
+            const totalAnnotated = Object.keys(annotations).filter(key => annotations[key].length > 0).length;
+            const totalEntities = Object.values(annotations).reduce((sum, anns) => sum + anns.length, 0);
+
+            return (
+                <div className="container">
+                    <div className="header">
+                        <h1>IoC Annotation Tool</h1>
+                        <p>Ground Truth Dataset Creator for Bachelor Thesis</p>
+                        <div className="progress-bar">
+                            <div 
+                                className="progress-fill" 
+                                style={{ width: `${messages.length ? (totalAnnotated / messages.length) * 100 : 0}%` }}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="main-content">
+                        <div className="annotation-panel">
+                            <div className="panel-title">Message Annotation</div>
+                            
+                            {messages.length === 0 ? (
+                                <div className="file-input-wrapper">
+                                    <label className="file-label" htmlFor="file-input">
+                                        📁 Click to load messages (JSON or CSV)
+                                        <input 
+                                            id="file-input"
+                                            type="file" 
+                                            className="file-input"
+                                            accept=".json,.csv"
+                                            onChange={handleFileLoad}
+                                        />
+                                    </label>
+                                </div>
+                            ) : (
+                                <>
+                                    <div className="instructions">
+                                        <strong>How to annotate:</strong>
+                                        1. Select text in the message below<br/>
+                                        2. Choose entity type (or use number keys 1-8)<br/>
+                                        3. Click annotated text to delete<br/>
+                                        4. Use arrow keys to navigate messages
+                                    </div>
+
+                                    <div 
+                                        ref={messageRef}
+                                        className="message-display selecting"
+                                        onMouseUp={handleTextSelection}
+                                    >
+                                        {renderMessageWithHighlights()}
+                                    </div>
+
+                                    <div className="controls">
+                                        <button 
+                                            className="btn btn-secondary"
+                                            onClick={handlePrevious}
+                                            disabled={currentIndex === 0}
+                                        >
+                                            ← Previous
+                                        </button>
+                                        <button 
+                                            className="btn btn-secondary"
+                                        >
+                                            {currentIndex + 1} / {messages.length}
+                                        </button>
+                                        <button 
+                                            className="btn btn-secondary"
+                                            onClick={handleNext}
+                                            disabled={currentIndex >= messages.length - 1}
+                                        >
+                                            Next →
+                                        </button>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        <div className="annotation-panel">
+                            <div className="panel-title">Entity Types</div>
+                            
+                            <div className="entity-types">
+                                {ENTITY_TYPES.map(type => (
+                                    <button
+                                        key={type.name}
+                                        className={`entity-type-btn ${selectedType === type.name ? 'selected' : ''}`}
+                                        onClick={() => setSelectedType(type.name)}
+                                        style={{ 
+                                            borderColor: selectedType === type.name ? type.color : undefined 
+                                        }}
+                                    >
+                                        {type.name}
+                                        <span className="shortcut">{type.shortcut}</span>
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="panel-title" style={{ marginTop: 20 }}>
+                                Current Annotations ({currentAnnotations.length})
+                            </div>
+                            
+                            <div className="annotated-entities">
+                                {currentAnnotations.length === 0 ? (
+                                    <p style={{ color: '#94a3b8', fontSize: 14, textAlign: 'center', padding: 20 }}>
+                                        No annotations yet. Select text to add.
+                                    </p>
+                                ) : (
+                                    currentAnnotations.map((ann, idx) => (
+                                        <div 
+                                            key={idx}
+                                            className="entity-item"
+                                            style={{ borderLeftColor: ENTITY_TYPES.find(t => t.name === ann.type)?.color }}
+                                        >
+                                            <div>
+                                                <div className="text">{ann.text}</div>
+                                                <div className="meta">
+                                                    {ann.type} • {ann.start_pos}-{ann.end_pos}
+                                                </div>
+                                            </div>
+                                            <button 
+                                                className="delete-btn"
+                                                onClick={() => deleteAnnotation(idx)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+
+                            <div className="stats">
+                                <div className="stat-card">
+                                    <div className="stat-value">{totalAnnotated}</div>
+                                    <div className="stat-label">Annotated</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-value">{totalEntities}</div>
+                                    <div className="stat-label">Total Entities</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-value">{messages.length}</div>
+                                    <div className="stat-label">Total Messages</div>
+                                </div>
+                            </div>
+
+                            {messages.length > 0 && (
+                                <>
+                                    <div style={{ 
+                                        background: '#f0fdf4', 
+                                        border: '1px solid #86efac',
+                                        padding: '12px',
+                                        borderRadius: '6px',
+                                        marginTop: 20,
+                                        fontSize: '13px',
+                                        color: '#166534'
+                                    }}>
+                                        ✓ Auto-save enabled
+                                        {lastSaved && (
+                                            <div style={{ fontSize: '11px', marginTop: '4px', opacity: 0.8 }}>
+                                                Last saved: {lastSaved}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: 10 }}>
+                                        <button 
+                                            className="btn btn-success"
+                                            onClick={exportAnnotations}
+                                        >
+                                            💾 Export Backup
+                                        </button>
+                                        <label className="btn btn-secondary" style={{ margin: 0, textAlign: 'center', lineHeight: '1.2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            📥 Import
+                                            <input 
+                                                type="file"
+                                                accept=".json"
+                                                onChange={importAnnotations}
+                                                style={{ display: 'none' }}
+                                            />
+                                        </label>
+                                    </div>
+
+                                    <button 
+                                        className="btn"
+                                        onClick={clearAllData}
+                                        style={{ 
+                                            marginTop: 10, 
+                                            background: '#fee2e2',
+                                            color: '#991b1b',
+                                            fontSize: '12px',
+                                            width: '100%'
+                                        }}
+                                    >
+                                        🗑️ Clear All Data
+                                    </button>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<AnnotationTool />, document.getElementById('root'));
+    </script>
+</body>
+</html>
