@@ -1,0 +1,1756 @@
+success,precision,recall,f1,tp,fp,fn,predicted_entities,gt_entities,fp_entities,fn_entities,elapsed_time,output,model,prompt_strategy,delimiter,file
+True,1.0,0.5,0.6666666666666666,3.0,0.0,3,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]",[],"[{'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}]",30.758120999999996,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,5.json
+True,1.0,0.8333333333333334,0.9090909090909091,5.0,0.0,1,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],"[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}]",12.779714,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,4.json
+True,1.0,0.5,0.6666666666666666,2.0,0.0,2,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",11.746206,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,3.json
+True,0.9,0.9,0.9,9.0,1.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}]","[{'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}]",24.426056999999997,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,6.json
+True,1.0,1.0,1.0,5.0,0.0,0,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],[],17.879382,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,7.json
+True,0.8333333333333334,0.8333333333333334,0.8333333333333334,5.0,1.0,1,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}]","[{'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",21.569843000000002,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",5.json
+True,1.0,0.5,0.6666666666666666,3.0,0.0,3,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],"[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}]",14.231414999999998,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",4.json
+True,1.0,0.75,0.8571428571428571,3.0,0.0,1,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}]",8.064306,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",3.json
+True,0.9,0.9,0.9,9.0,1.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}]","[{'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}]",23.075968000000003,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",6.json
+True,1.0,0.6,0.7499999999999999,3.0,0.0,2,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",11.89399,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",7.json
+True,1.0,0.8333333333333334,0.9090909090909091,5.0,0.0,1,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]",[],"[{'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",13.606183,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",5.json
+True,1.0,1.0,1.0,6.0,0.0,0,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],[],10.135307,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",4.json
+True,1.0,0.75,0.8571428571428571,3.0,0.0,1,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}]",8.000672,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",3.json
+True,0.8888888888888888,0.8,0.8421052631578948,8.0,1.0,2,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}]","[{'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}]",14.455678,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}, {'text': '6.4 BTC', 'type': 'btc', 'start_pos': 648, 'end_pos': 655}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",6.json
+True,1.0,0.8,0.888888888888889,4.0,0.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",7.462049,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}], 'confidence': '', 'reason': ''}",gemma3:12b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",7.json
+True,0.8,0.6666666666666666,0.7272727272727272,4.0,1.0,2,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}]","[{'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",28.256996,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,5.json
+True,1.0,1.0,1.0,6.0,0.0,0,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],[],12.329388000000002,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,4.json
+True,1.0,1.0,1.0,4.0,0.0,0,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],[],14.404505999999998,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,3.json
+True,1.0,1.0,1.0,10.0,0.0,0,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]",[],[],23.935245000000002,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,6.json
+True,1.0,1.0,1.0,5.0,0.0,0,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],[],17.437098,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,7.json
+True,0.8333333333333334,0.8333333333333334,0.8333333333333334,5.0,1.0,1,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}]","[{'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",20.09658,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",5.json
+True,1.0,1.0,1.0,6.0,0.0,0,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],[],17.427359000000003,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",4.json
+True,1.0,0.75,0.8571428571428571,3.0,0.0,1,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}]",8.13283,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",3.json
+True,1.0,1.0,1.0,10.0,0.0,0,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]",[],[],22.454324999999997,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",6.json
+True,1.0,0.8,0.888888888888889,4.0,0.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",11.848856999999999,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",7.json
+True,0.75,0.5,0.6,3.0,1.0,3,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}]","[{'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}]",13.032421,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",5.json
+True,1.0,0.8333333333333334,0.9090909090909091,5.0,0.0,1,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",[],"[{'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",8.544535,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Catalina', 'type': 'person', 'start_pos': 0, 'end_pos': 8}, {'text': 'Anna', 'type': 'person', 'start_pos': 84, 'end_pos': 88}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",4.json
+True,1.0,0.75,0.8571428571428571,3.0,0.0,1,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}]",8.243508,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 435, 'end_pos': 444}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",3.json
+True,1.0,0.6,0.7499999999999999,6.0,0.0,4,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}]",10.626203,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",6.json
+True,1.0,0.8,0.888888888888889,4.0,0.0,1,"[{'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",7.283628,"{'entities': [{'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}], 'confidence': '', 'reason': ''}",qwen2.5:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",7.json
+True,1.0,0.8333333333333334,0.9090909090909091,5.0,0.0,1,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]",[],"[{'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",39.147777999999995,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,5.json
+True,0.6666666666666666,0.6666666666666666,0.6666666666666666,4.0,2.0,2,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}, {'text': 'material', 'type': '...', 'start_pos': 197, 'end_pos': 205}, {'text': 'you', 'type': '...', 'start_pos': 206, 'end_pos': 209}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]","[{'text': 'material', 'type': '...', 'start_pos': 197, 'end_pos': 205}, {'text': 'you', 'type': '...', 'start_pos': 206, 'end_pos': 209}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}]",13.239501,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'varga', 'type': 'person', 'start_pos': 37, 'end_pos': 42}, {'text': 'material', 'type': '...', 'start_pos': 197, 'end_pos': 205}, {'text': 'you', 'type': '...', 'start_pos': 206, 'end_pos': 209}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,4.json
+True,1.0,0.5,0.6666666666666666,2.0,0.0,2,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",11.851554,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,3.json
+True,0.8333333333333334,1.0,0.9090909090909091,10.0,2.0,0,"[{'text': 'onion.link', 'type': 'url', 'start_pos': -1, 'end_pos': -1}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': 'onion.link', 'type': 'url', 'start_pos': -1, 'end_pos': -1}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}]",[],28.734636,"{'entities': [{'text': 'onion.link', 'type': 'url', 'start_pos': -1, 'end_pos': -1}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,6.json
+True,0.3333333333333333,1.0,0.5,5.0,10.0,0,"[{'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]","[{'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}]",[],34.491910999999995,"{'entities': [{'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'target123@darkmail.org', 'type': 'email', 'start_pos': -1, 'end_pos': -1}, {'text': '10.45.67.89', 'type': 'ip', 'start_pos': -1, 'end_pos': -1}, {'text': 'Thompson', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'Helsinki', 'type': 'location', 'start_pos': -1, 'end_pos': -1}, {'text': 'Tim', 'type': 'person', 'start_pos': -1, 'end_pos': -1}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+",. ,7.json
+True,0.6666666666666666,0.6666666666666666,0.6666666666666666,4.0,2.0,2,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}, {'text': 'encrypted', 'type': 'encrypted', 'start_pos': 488, 'end_pos': 497}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'encrypted', 'type': 'encrypted', 'start_pos': 488, 'end_pos': 497}]","[{'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",21.652125,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna Key', 'type': 'person', 'start_pos': 232, 'end_pos': 240}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}, {'text': 'encrypted', 'type': 'encrypted', 'start_pos': 488, 'end_pos': 497}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",5.json
+True,0.5,0.3333333333333333,0.4,2.0,2.0,4,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 248, 'end_pos': 255}, {'text': 'laundering', 'type': 'location', 'start_pos': 277, 'end_pos': 287}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]","[{'text': 'Bitcoin', 'type': 'btc', 'start_pos': 248, 'end_pos': 255}, {'text': 'laundering', 'type': 'location', 'start_pos': 277, 'end_pos': 287}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",18.417563999999995,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 248, 'end_pos': 255}, {'text': 'laundering', 'type': 'location', 'start_pos': 277, 'end_pos': 287}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",4.json
+True,1.0,0.5,0.6666666666666666,2.0,0.0,2,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",6.935373,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",3.json
+True,0.8181818181818182,0.9,0.8571428571428572,9.0,2.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance', 'type': 'person', 'start_pos': 477, 'end_pos': 482}, {'text': 'Moreno', 'type': 'person', 'start_pos': 483, 'end_pos': 489}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': 'Lance', 'type': 'person', 'start_pos': 477, 'end_pos': 482}, {'text': 'Moreno', 'type': 'person', 'start_pos': 483, 'end_pos': 489}]","[{'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}]",25.592816,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Lance', 'type': 'person', 'start_pos': 477, 'end_pos': 482}, {'text': 'Moreno', 'type': 'person', 'start_pos': 483, 'end_pos': 489}, {'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 802, 'end_pos': 811}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",6.json
+True,1.0,0.8,0.888888888888889,4.0,0.0,1,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",13.043683999999999,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 132, 'end_pos': 140}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 252, 'end_pos': 261}, {'text': 'Anna', 'type': 'person', 'start_pos': 266, 'end_pos': 270}, {'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+",7.json
+True,0.8333333333333334,0.8333333333333334,0.8333333333333334,5.0,1.0,1,"[{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}, {'text': 'Signal', 'type': 'tox', 'start_pos': 506, 'end_pos': 512}]","[{'startOffset': 41, 'endOffset': 61, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 179, 'endOffset': 221, 'type': 'BTC', 'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d'}, {'startOffset': 232, 'endOffset': 238, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 290, 'endOffset': 299, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 409, 'endOffset': 451, 'type': 'BTC', 'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'}]","[{'text': 'Signal', 'type': 'tox', 'start_pos': 506, 'end_pos': 512}]","[{'startOffset': 269, 'endOffset': 273, 'type': 'PERSON', 'text': 'Anna'}]",15.906803,"{'entities': [{'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 41, 'end_pos': 61}, {'text': 'bc1qt5vmgkz06c4q6z3trw8gkfj0y7n07gq5kzm68d', 'type': 'btc', 'start_pos': 179, 'end_pos': 221}, {'text': 'Anna', 'type': 'person', 'start_pos': 232, 'end_pos': 236}, {'text': 'Marcellus', 'type': 'person', 'start_pos': 290, 'end_pos': 299}, {'text': 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 'type': 'btc', 'start_pos': 409, 'end_pos': 451}, {'text': 'Signal', 'type': 'tox', 'start_pos': 506, 'end_pos': 512}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",5.json
+True,0.75,0.5,0.6,3.0,1.0,3,"[{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'A.H.', 'type': 'person', 'start_pos': 345, 'end_pos': 349}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 35, 'endOffset': 62, 'type': 'EMAIL', 'text': 'c.varga@journalisttruth.org'}, {'startOffset': 63, 'endOffset': 83, 'type': 'EMAIL', 'text': 'cv.editor@riseup.net'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 144, 'endOffset': 150, 'type': 'LOCATION', 'text': 'Prague'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]","[{'text': 'A.H.', 'type': 'person', 'start_pos': 345, 'end_pos': 349}]","[{'startOffset': 0, 'endOffset': 8, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 84, 'endOffset': 88, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 164, 'endOffset': 169, 'type': 'PERSON', 'text': 'Varga'}]",7.454022,"{'entities': [{'text': 'c.varga@journalisttruth.org', 'type': 'email', 'start_pos': 35, 'end_pos': 62}, {'text': 'cv.editor@riseup.net', 'type': 'email', 'start_pos': 63, 'end_pos': 83}, {'text': 'Prague', 'type': 'location', 'start_pos': 143, 'end_pos': 149}, {'text': 'A.H.', 'type': 'person', 'start_pos': 345, 'end_pos': 349}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",4.json
+True,1.0,0.5,0.6666666666666666,2.0,0.0,2,"[{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}]","[{'startOffset': 49, 'endOffset': 53, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 371, 'endOffset': 413, 'type': 'BTC', 'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",[],"[{'startOffset': 289, 'endOffset': 293, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 435, 'endOffset': 444, 'type': 'PERSON', 'text': 'Marcellus'}]",7.000377,"{'entities': [{'text': 'Anna', 'type': 'person', 'start_pos': 49, 'end_pos': 53}, {'text': 'bc1q2gdf0hxk6e5nxp72cr9sv5uwx9a0gz0h3p9a4f', 'type': 'btc', 'start_pos': 371, 'end_pos': 413}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",3.json
+True,0.8571428571428571,0.6,0.7058823529411764,6.0,1.0,4,"[{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}]","[{'startOffset': 33, 'endOffset': 41, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 191, 'endOffset': 201, 'type': 'LOCATION', 'text': 'Seychelles'}, {'startOffset': 342, 'endOffset': 346, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 422, 'endOffset': 446, 'type': 'EMAIL', 'text': 'contact@unitedchange.org'}, {'startOffset': 469, 'endOffset': 500, 'type': 'EMAIL', 'text': 'lance.morenopolitical@gmail.com'}, {'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 661, 'endOffset': 673, 'type': 'PERSON', 'text': 'Lance Moreno'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]","[{'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}]","[{'startOffset': 579, 'endOffset': 587, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 752, 'endOffset': 760, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 778, 'endOffset': 782, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 793, 'endOffset': 802, 'type': 'PERSON', 'text': 'Marcellus'}]",12.011587,"{'entities': [{'text': 'Catalina', 'type': 'person', 'start_pos': 34, 'end_pos': 42}, {'text': 'contact@unitedchange.org', 'type': 'email', 'start_pos': 430, 'end_pos': 454}, {'text': 'lance.morenopolitical@gmail.com', 'type': 'email', 'start_pos': 477, 'end_pos': 508}, {'text': 'Seychelles', 'type': 'location', 'start_pos': 192, 'end_pos': 202}, {'text': 'Anna', 'type': 'person', 'start_pos': 343, 'end_pos': 347}, {'text': 'Bitcoin', 'type': 'btc', 'start_pos': 325, 'end_pos': 332}, {'text': 'Lance Moreno', 'type': 'person', 'start_pos': 669, 'end_pos': 681}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",6.json
+True,1.0,0.2,0.33333333333333337,1.0,0.0,4,"[{'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}]","[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 451, 'endOffset': 469, 'type': 'EMAIL', 'text': 'm.grant512@tuta.io'}]",[],"[{'startOffset': 132, 'endOffset': 140, 'type': 'PERSON', 'text': 'Catalina'}, {'startOffset': 252, 'endOffset': 261, 'type': 'PERSON', 'text': 'Marcellus'}, {'startOffset': 266, 'endOffset': 270, 'type': 'PERSON', 'text': 'Anna'}, {'startOffset': 431, 'endOffset': 435, 'type': 'PERSON', 'text': 'Anna'}]",3.139531,"{'entities': [{'text': 'm.grant512@tuta.io', 'type': 'email', 'start_pos': 451, 'end_pos': 469}], 'confidence': '', 'reason': ''}",deepseek-r1:14b,"You are a cyber intelligence analyst with 20 years of experience in the the field.
+
+Your task is to extract any entity from the input text. For each entity found you MUST indicate the type in UPPERCASE. ONLY extract entities if literal entity is present in input text.
+The expected entity types are the following:
+
+
+- EMAIL: email addresses format (user@domain.tld)
+- IP: IP addresses (IPv4 x.x.x.x or IPv6)
+- BTC: ONLY Bitcoin wallet addresses (26-35 alphanumeric, starting with 1, 3, or bc1) EXCLUDE the word bitcoin or values (for example 2.0 BTC)
+- IBAN: iban bank account number
+- PERSON: Human names (John Smith, John, Catalina) EXCLUDE initials (for example A.H.) 
+- LOCATION: cities, countries, geographic locations
+- PHONE: phone numbers in any format
+- URL: URLs and web addresses EXCLUDE filenames
+- TOX: Tox messenger IDs
+
+ 
+**Output**:
+The output MUST be in a JSON object with key 'entities' and the value a list of dictionaries including every entity found. For each entity you MUST indicate the type in UPPERCASE.
+{""entities"": [{""entity"" : ""text"", ""type"" : ""TYPE""}]}
+
+Return empty array if no entities found in the input text.
+PAY ATTENTION to sentences that begin with entity type PERSON, for example Anna.
+PAY ATTENTION to when the sentences begin with possesive forms of entity type PERSON, for example Catalina's
+PAY ATTENTION to when the sentences contain a FULL NAME, the FULL NAME MUST be extracted as ONE entity.
+DO NOT include any entities from the example or the system prompt in your answer.
+
+**OUTPUT EXAMPLE**:
+{
+  ""entities"": [
+    {""entity"": ""target123@darkmail.org"", ""type"": ""EMAIL""},
+    {""entity"": ""10.45.67.89"", ""type"": ""IP""},
+    {""entity"": ""Thompson"", ""type"": ""PERSON""},
+    {""entity"": ""Helsinki"", ""type"": ""LOCATION""},
+    {""entity"": ""Tim"", ""type"": ""PERSON""}
+  ]
+}
+","
+
+",7.json

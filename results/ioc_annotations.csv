@@ -1,0 +1,519 @@
+id,text,gt_entities
+0,"Hey ))",[]
+1,"Hey",[]
+2,"ygybvyvuvhhvuvyvugzzzzzmmm",[]
+3,"Chil102.exe chil103.dll",[]
+4,"Fresh chillies near Marseille","[{""text"": ""Marseille"", ""type"": ""LOCATION"", ""start_pos"": 20, ""end_pos"": 29}]"
+5,"Hey))",[]
+6,"Hey",[]
+7,"Hey ))",[]
+8,"What files to do?",[]
+9,"I do not know",[]
+10,"I thought you were aware",[]
+11,"Hello.",[]
+12,"Stern said to make files for you. What are needed?","[{""text"": ""Stern"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 5}]"
+13,"I&#39;ll ask Morse","[{""text"": ""Morse"", ""type"": ""PERSON"", ""start_pos"": 13, ""end_pos"": 18}]"
+14,"Hey",[]
+15,"I understand the trick",[]
+16,"I&#39;ll clarify by group",[]
+17,"Please do mor114","[{""text"": ""mor114"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 10, ""end_pos"": 16}]"
+18,"Ok",[]
+19,"Morse trick crypto?","[{""text"": ""Morse"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 5}]"
+20,"Yes",[]
+21,"How many versions?",[]
+22,"mor114 now Hof will flood","[{""text"": ""mor114"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 0, ""end_pos"": 6}]"
+23,"Do not know",[]
+24,"Didn&#39;t specify how much",[]
+25,"Let&#39;s make 3 versions. 2 with different hashes and 1 with a different stub. Norm?",[]
+26,"flooded",[]
+27,"Good",[]
+28,"Hof flooded",[]
+29,"Hey",[]
+30,"I need a file to download. tomorrow",[]
+31,"by 13.00",[]
+32,"Moscow time","[{""text"": ""Moscow"", ""type"": ""LOCATION"", ""start_pos"": 0, ""end_pos"": 6}]"
+33,"What about on Sunday?",[]
+34,"although not by 9.00 Moscow time","[{""text"": ""Moscow"", ""type"": ""LOCATION"", ""start_pos"": 21, ""end_pos"": 27}]"
+35,"Sunday is not necessary",[]
+36,"tomorrow at 9.00",[]
+37,"<mors>although not by 9.00 Moscow time [21:18:00]<mors> don&#39;t do it on sunday [21:18:05]<mors> tomorrow at 9.00","[{""text"": ""Moscow"", ""type"": ""LOCATION"", ""start_pos"": 27, ""end_pos"": 33}]"
+38,"What&#39;s the best way to do it?",[]
+39,"""I will be tomorrow at 9 am Moscow time. I can fill it in now","[{""text"": ""Moscow"", ""type"": ""LOCATION"", ""start_pos"": 28, ""end_pos"": 34}]"
+40,"Let&#39;s go for version 1.",[]
+41,"""Okay",[]
+42,"flooded",[]
+43,"Look",[]
+44,"All OK.",[]
+45,"See you tomorrow ))",[]
+46,"Good",[]
+47,"See you tomorrow))",[]
+48,"plfhjdf",[]
+49,"healthy",[]
+50,"plfhjdf",[]
+51,"healthy",[]
+52,"Hey",[]
+53,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
+54,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+55,"Pass: FDWQASAFDASAFDASADF""",[]
+56,"Wait",[]
+57,"Hey",[]
+58,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
+59,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+60,"Pass: FDWQASAFDASAFDASADF""",[]
+61,"Wait",[]
+62,"Hello. Can I connect to that Windows Server 2019 VM?",[]
+63,"""<arbadakarba2000>hello [14:25:17]<volhvb> There was a problem with serts. Can&#39;t install [14:25:56]<arbadakarba2000> I can install","[{""text"": ""arbadakarba2000"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 2, ""end_pos"": 17}, {""text"": ""volhvb"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 35, ""end_pos"": 41}, {""text"": ""arbadakarba2000"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 104, ""end_pos"": 119}]"
+64,"Hey",[]
+65,"I&#39;m here",[]
+66,"""sorry",[]
+67,"[21:39:30]<electronic> when does the target happen on the network? when is the best time to get him?",[]
+68,"[21:39:56]<Stern> usually always online [21:40:04]<Stern> I think on Monday it will be [21:40:17]<electronic> usually during the day? [21:40:27]<Stern> yes [21:40:27]<electronic> he is always in my office for some reason [21:40:36]<electronic> OK","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 11, ""end_pos"": 16}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 51, ""end_pos"": 56}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 98, ""end_pos"": 108}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 145, ""end_pos"": 150}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 232, ""end_pos"": 242}]"
+69,"waiting for you",[]
+70,"Hey",[]
+71,"tor hangs constantly lately",[]
+72,"let&#39;s write",[]
+73,"""[08:28:10]<electronic> hello [08:28:11]<electronic> I&#39;m here [08:29:04]<electronic> sorry","[{""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 22}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 41, ""end_pos"": 51}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 77, ""end_pos"": 87}]"
+74,"""we&#39;ll decide everything",[]
+75,"Hey",[]
+76,"there were large shops of 200-500 ml",[]
+77,"then everything fell apart",[]
+78,"as he wrote",[]
+79,"you",[]
+80,"""in general",[]
+81,"at the beginning of September we will do more",[]
+82,"to these numbers it is necessary to establish a connection with you",[]
+83,"""well",[]
+84,"constantly hanging",[]
+85,"write me here during the day",[]
+86,"constantly",[]
+87,"if the toad lies",[]
+88,"then describe the off",[]
+89,"agree everything somehow with this toad",[]
+90,"wild",[]
+91,"confirm that you received messages",[]
+92,"""in general",[]
+93,"up to 5 numbers",[]
+94,"large ecommerce shops",[]
+95,"""well",[]
+96,"ask ryuk to text me","[{""text"": ""ryuk"", ""type"": ""PERSON"", ""start_pos"": 4, ""end_pos"": 8}]"
+97,"for us to work together",[]
+98,"at the beginning of September we will start working with him",[]
+99,"with a prof",[]
+100,"and with an electron",[]
+101,"""offline",[]
+102,"how",[]
+103,"you",[]
+104,"""Hello",[]
+105,"I am writing to you from that world",[]
+106,"and how is it",[]
+107,"in the world of the living",[]
+108,")))))))",[]
+109,"what&#39;s new dooms)",[]
+110,"How is our work going?",[]
+111,"1 kerb huddled for emp)",[]
+112,"There is a chance that the locale is admin",[]
+113,"So on Monday they will close the case",[]
+114,"what is the power",[]
+115,"we have tesla",[]
+116,"в100",[]
+117,"100 pieces",[]
+118,"video cards",[]
+119,"How much do you have",[]
+120,"And honestly xs",[]
+121,"Not interested",[]
+122,"ask a pro",[]
+123,"or i know",[]
+124,"does not matter",[]
+125,"pongyal",[]
+126,"you have 3 corps right?",[]
+127,"For you",[]
+128,"fixed",[]
+129,"Personal?",[]
+130,"to her",[]
+131,"Yes",[]
+132,"1 zohocorp for offline players on promotion",[]
+133,"oh yes it is)",[]
+134,"1 yard network",[]
+135,"did you decide to give them?",[]
+136,"But it&#39;s not that simple.)",[]
+137,"understood)",[]
+138,"prof wrote to me",[]
+139,"sort of",[]
+140,"as I understand",[]
+141,"4 grids there in work",[]
+142,"""and 1 vyptail a little bit at all",[]
+143,"""the rest",[]
+144,"""and as I understand it",[]
+145,"but did not understand who",[]
+146,"to the office?",[]
+147,"""Well",[]
+148,"or do you have nets for them",[]
+149,"now 40 2080ti",[]
+150,"farm power",[]
+151,"you can find out",[]
+152,"what power",[]
+153,"will",[]
+154,"from 100",[]
+155,"pieces",[]
+156,"tesla v100",[]
+157,"these are the most powerful video cards",[]
+158,"in the world like",[]
+159,"and they still need to be combined somehow for work",[]
+160,"but it&#39;s not that hard",[]
+161,"So they probably will stand lard?",[]
+162,"1kk",[]
+163,"Rub?",[]
+164,"No",[]
+165,"with them as I understand",[]
+166,"at the moment 50% of the grids can be untwisted",[]
+167,"so it&#39;s pennies",[]
+168,"on business",[]
+169,"now 40 2080ti only now I want to get rcuda software to unite clusters 1:11 AM and Tesla in 100 x100 will be more powerful? 1:13 AM tesla is 2x faster 1:14 AM compared to 2080ti? 1:14 AM 2 times faster than 2080ti 1:15 AM got it 1:15 AM but costs 6 times more",[]
+170,"in general",[]
+171,"ask",[]
+172,"2-4 times faster",[]
+173,"do",[]
+174,"what he is doing",[]
+175,"can?",[]
+176,"Well he wrote",[]
+177,"X2 is more powerful than the current one",[]
+178,"In the current configuration 40 pieces",[]
+179,"So you can make x2 for 40 pieces",[]
+180,"And apparently another x2 for 80 pieces",[]
+181,"and it will be like x4",[]
+182,"not x1 like right now",[]
+183,"by power",[]
+184,"Something like that",[]
+185,"""&quot;now they are driving rtx3090",[]
+186,"""&quot;well",[]
+187,"OK",[]
+188,"I see you are ok with that",[]
+189,"then let him do",[]
+190,"me as always",[]
+191,"climb somewhere to speed up",[]
+192,"""and in what quantity? 1:18 AM 24 pcs so far",[]
+193,"""Well",[]
+194,"understood",[]
+195,"oh listen",[]
+196,"are you there",[]
+197,"got",[]
+198,"fast",[]
+199,"up to two YES",[]
+200,"remember",[]
+201,"you wrote",[]
+202,"right at the start",[]
+203,"on large grids",[]
+204,"so",[]
+205,"happened there",[]
+206,"three here?",[]
+207,"or you",[]
+208,"who of you",[]
+209,"drop your emails for a couple of builds",[]
+210,"""Download: https://qaz.im/load/TA3bnN/7ebbZY","[{""text"": ""https://qaz.im/load/TA3bnN/7ebbZY"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
+211,"Delete: https://qaz.im/index.php?a=delete&q=1223188473""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1223188473\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 55}]"
+212,"Password 123",[]
+213,"Hey",[]
+214,"we are from Wednesday",[]
+215,"""Sorry",[]
+216,")",[]
+217,"think",[]
+218,"pensioners",[]
+219,"they have less",[]
+220,"this year?",[]
+221,"because of covid",[]
+222,"maybe they",[]
+223,"rights",[]
+224,"kovid mowed down many",[]
+225,"they have clients",[]
+226,"became",[]
+227,"less",[]
+228,"))))))))))))))))))",[]
+229,"you are 1 or 2",[]
+230,"put",[]
+231,"on loc",[]
+232,"""listen",[]
+233,"all so",[]
+234,"id must have the correct format specified in the TOR",[]
+235,"queries can be debugged in Postman",[]
+236,"d7Kb4bMa &amp; ks @ fkRNso",[]
+237,"""Download: https://qaz.im/load/KQfTKt/A6Ns5f","[{""text"": ""https://qaz.im/load/KQfTKt/A6Ns5f"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
+238,"Delete: https://qaz.im/index.php?a=delete&q=369478002""","[{""text"": ""https://qaz.im/index.php?a=delete&q=369478002\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+239,"Here is an example request and response",[]
+240,"""upon request",[]
+241,"What about your work plans?",[]
+242,"They are needed urgently. This task is a priority.",[]
+243,"If you can&#39;t estimate the deadlines for any unclear points from the TOR - send your questions on these points.",[]
+244,"plan",[]
+245,"a.4Wy8n@n&yMt:3)f",[]
+246,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 10, ""end_pos"": 43}]"
+247,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 53}]"
+248,"plan",[]
+249,"a.4Wy8n@n&yMt:3)f",[]
+250,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 10, ""end_pos"": 43}]"
+251,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 53}]"
+252,"""Sorry",[]
+253,")",[]
+254,"think",[]
+255,"pensioners",[]
+256,"they have less",[]
+257,"this year?",[]
+258,"because of covid",[]
+259,"maybe they",[]
+260,"rights",[]
+261,"kovid mowed down many",[]
+262,"they have clients",[]
+263,"became",[]
+264,"less",[]
+265,"))))))))))))))))))",[]
+266,"how are you three",[]
+267,"how are you",[]
+268,"my girls in the office are crying",[]
+269,"say the boss",[]
+270,"when will we fuck everyone in the usa",[]
+271,"When will you be able to take a day off?",[]
+272,"i say no time",[]
+273,"not yet time",[]
+274,"three on guard",[]
+275,"locks",[]
+276,"how are you three",[]
+277,"they offered 18 bts lol)",[]
+278,"all",[]
+279,"troy",[]
+280,"does not write",[]
+281,"does not call",[]
+282,"even for the news",[]
+283,"does not answer",[]
+284,"this",[]
+285,"about",[]
+286,"stop",[]
+287,"chance",[]
+288,"he is here",[]
+289,"Hurrah",[]
+290,"i&#39;m not in chs yet",[]
+291,"other",[]
+292,"released",[]
+293,"obnovlyay vremya ot vremeni",[]
+294,"lumius",[]
+295,"unsubscribed",[]
+296,"contacted them via video call",[]
+297,"they fucked our brains",[]
+298,"18 bts offered",[]
+299,"they have a turnover of 30 m",[]
+300,"lol fuck",[]
+301,"Called 4 times via video",[]
+302,"and again 30 fucking voice just",[]
+303,"they fucked us",[]
+304,"let the bitches die",[]
+305,"we all management fuck them now",[]
+306,"so that they know their heroes by name",[]
+307,"bitches",[]
+308,"18 bts lol fuck",[]
+309,"let them pay millions of bitches",[]
+310,"at the office",[]
+311,"with 30m",[]
+312,"there are millions of fucking",[]
+313,"millions",[]
+314,"we explain it to them",[]
+315,"and they threaten us",[]
+316,"what will they find us later",[]
+317,"hahaha",[]
+318,"looking forward to visiting",[]
+319,"18 bts fucking",[]
+320,"let them shove it in the ass",[]
+321,"""nothing",[]
+322,"plzz mis dont du it",[]
+323,")))))))))",[]
+324,"hahaha",[]
+325,"otherwise everyone got used to that some kind of lol chats they have correspondence there",[]
+326,"we fucked these schemes",[]
+327,"18 bts lol",[]
+328,"ххахахахаха",[]
+329,"fucking offer of the century",[]
+330,"""lyama bitch",[]
+331,"tomorrow the whole office will have them",[]
+332,"let&#39;s see how they dance",[]
+333,"Def. starts to demolish after injection in explorer",[]
+334,"""Hello",[]
+335,"""[19:30:54]<Ali> Hello [19:31:09]<Ali> [17:38:36]<steller> Hello. The site has been raised. https://217.12.203.220. You need to take the password from the talar","[{""text"": ""Ali"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 15}, {""text"": ""Ali"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 34, ""end_pos"": 37}, {""text"": ""steller"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 50, ""end_pos"": 57}, {""text"": ""https://217.12.203.220"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 92, ""end_pos"": 114}]"
+336,"Hello. Sorry ) Confused ) This is mavemat<mavemat@q3mcco35auwcstmt.onion>","[{""text"": ""mavemat@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 42, ""end_pos"": 72}]"
+337,"found vpsku which fonila",[]
+338,"""was in a recent config",[]
+339,"this should also be foreseen for the future.",[]
+340,"Hey",[]
+341,"Hello.",[]
+342,"Hey",[]
+343,")",[]
+344,"Hey",[]
+345,"""[05:27:36]<target> lumius [05:27:39]<target> unsubscribed [05:27:47]<target> phoned them via video link [05:27:52]<target> they fucked our brains [05:27:54]<target> 18 bts offered [05:27:56]<target> their turnover is 30 m [05:28:01]<target> lol fucking [05:28:07]<target> Called 4 times via video [05:28:13]<target> and again 30 fucking voice just [05:28:14]<target> they fucked us [05:28:22]<target> let the bitches die [05:28:29]<target> we all management fuck them now [05:28:37]<target> so that they know their heroes by name [05:28:38]<target> bitches [05:28:55]<target> 18 bts lol fucking [05:29:02]<target> let them pay millions of bitches [05:29:15]<target> at the office [05:29:16]<target> from 30m [05:29:20]<target> millions have fucking [05:29:25]<target> millions [05:29:28]<target> we explain it to them [05:29:31]<target> and they threaten us [05:29:35]<target> that they will find us later [05:29:37]<target> hahaha [05:29:42]<target> waiting for a visit fucking [05:29:48]<target> 18 bts fucking [05:29:52]<target> let them shove it in the ass [05:31:02]<target> nothing",[]
+346,"""Hello",[]
+347,"""As a result",[]
+348,"""Max The Tester","[{""text"": ""Max"", ""type"": ""PERSON"", ""start_pos"": 1, ""end_pos"": 4}]"
+349,Trojan:Win32/Wacatac.C!ml,[]
+350,Max The Tester,"[{""text"": ""Max"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 3}]"
+351,"file: C:\Users\TST10ENG\AppData\Local\Temp\AF60.tmp.exe""",[]
+352,"After 2-3 minutes of work",[]
+353,"C:\Users\TST10ENG\AppData\Local\Temp\AF60.tmp.exe what file?",[]
+354,"This is not a bot or a loader.",[]
+355,"Hey",[]
+356,"Hey",[]
+357,"Unclear",[]
+358,"on the crypt?",[]
+359,"It looks like a downloadable file of some kind. Can&#39;t you grab him?",[]
+360,"But as?",[]
+361,"""right now the morning will come",[]
+362,"How to tell the defender to restore the file.",[]
+363,"18 bts offer lol lollipop",[]
+364,"""In the defender",[]
+365,"I will do",[]
+366,"30+ calls and they still haven&#39;t heard us",[]
+367,"in this luimsko","[{""text"": ""luimsko"", ""type"": ""PERSON"", ""start_pos"": 8, ""end_pos"": 15}]"
+368,"Hey",[]
+369,"""hello karter","[{""text"": ""karter"", ""type"": ""PERSON"", ""start_pos"": 7, ""end_pos"": 13}]"
+370,"Hey",[]
+371,"unlocked the old mail",[]
+372,"there are several applicants during the day they will send a cart",[]
+373,"""There",[]
+374,"here is the first Sky01z cart","[{""text"": ""Sky01z"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 18, ""end_pos"": 24}]"
+375,"Yes",[]
+376,"FIDKJhslkdjhgliudghkjdfhlgksj",[]
+377,"""",[]
+378,    Download: https://qaz.im/load/9B2ATe/aa7shR   ,"[{""text"": ""https://qaz.im/load/9B2ATe/aa7shR"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 14, ""end_pos"": 47}]"
+379,"    Delete: https://qaz.im/index.php?a=delete&q=2063358067""","[{""text"": ""https://qaz.im/index.php?a=delete&q=2063358067\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 12, ""end_pos"": 59}]"
+380,"All cryptos for yesterday",[]
+381,"""mavemat@q3mcco35auwcstmt.onion Hello","[{""text"": ""mavemat@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 1, ""end_pos"": 31}]"
+382,"Hi good",[]
+383,"""hi",[]
+384,"""Well",[]
+385,"doing",[]
+386,"""[10:41:04]<kaktus@q3mcco35auwcstmt.onion> [08.10.2020 20:20:02]<dove> listen","[{""text"": ""kaktus@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 12, ""end_pos"": 41}, {""text"": ""dove"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 65, ""end_pos"": 69}]"
+387,"""hello https://qaz.im/load/hQbHN9/e3ZdGz all that is on the TP links","[{""text"": ""https://qaz.im/load/hQbHN9/e3ZdGz"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 7, ""end_pos"": 40}]"
+388,"Hey",[]
+389,"""hello",[]
+390,"Do another build?",[]
+391,"Removed 1 detection.",[]
+392,"For source.",[]
+393,"Talk to Buza. I can not repeat the kid immediately demolishes the krpt","[{""text"": ""Buza"", ""type"": ""PERSON"", ""start_pos"": 8, ""end_pos"": 12}]"
+394,"And you allow the crypt.",[]
+395,"Then you roll back.",[]
+396,"Resolve and restore the crypt.",[]
+397,"allowed detection but now there is no detection on that file from tmp",[]
+398,"Does the file itself exist?",[]
+399,"Find the *.exe file in the temp folder",[]
+400,"Now there is no exe there",[]
+401,"""Run the crypt",[]
+402,"did so",[]
+403,"""And there is no exe there at all",[]
+404,"No",[]
+405,"""Most likely this is a file from the crypt",[]
+406,"""Ask the one who did the crypt",[]
+407,"got it ok",[]
+408,"""<mushroom>Most likely this is a file from the crypt","[{""text"": ""mushroom"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 2, ""end_pos"": 10}]"
+409,"I don&#39;t write in tempo",[]
+410,"""I do not write any files to disks",[]
+411,"""<deploy@q3mcco35auwcstmt.onion>I don&#39;t write anything in tempo [15:22:40]<deploy@q3mcco35auwcstmt.onion> I do not write any files to disks","[{""text"": ""deploy@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 2, ""end_pos"": 31}, {""text"": ""deploy@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 79, ""end_pos"": 108}]"
+412,"That&#39;s strange.",[]
+413,"Doesn&#39;t this detection show up anymore?",[]
+414,"If run on a pumped out machine. When this file is not yet allowed in temp.",[]
+415,"no more no such detection",[]
+416,"""Maybe this is not connected with the loader at all and not with the bot",[]
+417,"""Come on again",[]
+418,"Yes.",[]
+419,"Hello.",[]
+420,"And what about the git?",[]
+421,"Doesn&#39;t work at all...",[]
+422,"Okay",[]
+423,"""Def",[]
+424,"Hello.",[]
+425,"And what about the git?",[]
+426,"Doesn&#39;t work at all...",[]
+427,"""bot",[]
+428,34.205.89.33,"[{""text"": ""34.205.89.33"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 12}]"
+429,3.15.221.20,[]
+430,loader,[]
+431,52.34.17.37,"[{""text"": ""52.34.17.37"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 11}]"
+432,54.89.230.95,"[{""text"": ""54.89.230.95"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 12}]"
+433,"35.164.230.208""","[{""text"": ""35.164.230.208"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 14}]"
+434,"""Download: https://qaz.im/load/AtZebR/ZfT5Qe","[{""text"": ""https://qaz.im/load/AtZebR/ZfT5Qe"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
+435,"Delete: https://qaz.im/index.php?a=delete&q=1979992415""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1979992415"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+436,"password 22221111",[]
+437,"++",[]
+438,"and the same for you",[]
+439,"""Hello",[]
+440,"""hi",[]
+441,"Hey",[]
+442,"karter register 3 servs for coba and 3 domains for paying for bobi","[{""text"": ""karter"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 6}, {""text"": ""bobi"", ""type"": ""PERSON"", ""start_pos"": 62, ""end_pos"": 66}]"
+443,"permaDll not run on bots?",[]
+444,"Okay",[]
+445,"""hi",[]
+446,"""hi",[]
+447,"you need another server by analogy 64.56.74.56 for the floor","[{""text"": ""64.56.74.56"", ""type"": ""IP"", ""start_pos"": 35, ""end_pos"": 46}]"
+448,"and this one is ready mavemat@q3mcco35auwcstmt.onion need a server by analogy with this 217.12.218.196 ?","[{""text"": ""mavemat@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 22, ""end_pos"": 52}, {""text"": ""217.12.218.196"", ""type"": ""IP"", ""start_pos"": 88, ""end_pos"": 102}]"
+449,"1",[]
+450,"shorter",[]
+451,"we take the loader",[]
+452,"Hey",[]
+453,"and insert 2 different kobs there",[]
+454,"or covid + coba",[]
+455,"he will immediately throw bots there",[]
+456,"without bk",[]
+457,"come on koba",[]
+458,"not a crypt",[]
+459,"and this covid",[]
+460,"not a crypt",[]
+461,"1",[]
+462,"1",[]
+463,"[12:34:44]<target> 1 [12:34:44]<target> 1 [12:34:44]<target> 1 [12:34:44]<target> 1 [12:34:45]<target> 1 [12:34:46]<target> shorter [12:34:49]<target> we take the loader [12:34:50]<target> hello [12:34:54]<target> and insert 2 different kobs there [12:34:56]<target> or covid + koba [12:35:00]<target> he will immediately throw bots there [12:35:04]<target> without bq [12:35:11]<target> come on koby [12:35:13]<target> not crypt [12:35:15]<target> and this covid [12:35:16]<target> not crypt [12:35:17]<target> 1 [12:35:17]<target> 1 [12:35:17]<target> 1 [12:35:18]<target> one",[]
+464,"will load now",[]
+465,"OK",[]
+466,"there they had problems with the back",[]
+467,"couldn&#39;t upload",[]
+468,"understood",[]
+469,"thanks",[]
+470,"Will you give yesterday&#39;s koba? exe x 64 we will make a loader BK + koba",[]
+471,"Ok",[]
+472,"they offered 18 bts lol)",[]
+473,"""right now the morning will come",[]
+474,"18 bts offer lol lollipop",[]
+475,"30+ calls and they still haven&#39;t heard us",[]
+476,"in this luimsko",[]
+477,"""[10:41:04]<kaktus@q3mcco35auwcstmt.onion> [08.10.2020 20:20:02]<dove> listen","[{""text"": ""kaktus@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 12, ""end_pos"": 41}]"
+478,"Hey are you here?",[]
+479,"Hey",[]
+480,"how is sea?",[]
+481,"loads in the second admin panel?",[]
+482,"Hey",[]
+483,"made the source of cryptem",[]
+484,"Hey",[]
+485,"nothing came from you",[]
+486,"create a payment",[]
+487,"1st and 15th of each month",[]
+488,"did not understand",[]
+489,"????",[]
+490,"it hasn&#39;t shipped for a week",[]
+491,"Now I will clarify",[]
+492,"a couple of payments came",[]
+493,"you don&#39;t ship for a week by the way",[]
+494,"what is the problem there?",[]
+495,"""if in the crypt",[]
+496,"""Hello",[]
+497,"what happened to him yesterday?",[]
+498,"Ghbdtn",[]
+499,"hi there jabber checker fell off at the needle yesterday",[]
+500,"2 admin was not working yesterday",[]
+501,"[10:52:46]<Stern> he hasn&#39;t loaded anywhere for a week [10:52:51]<bentley> I&#39;ll clarify now [10:54:04]<Stern> what happened to him yesterday? [10:54:36]<bentley> 2 admin was not working yesterday","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 11, ""end_pos"": 16}, {""text"": ""bentley"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 70, ""end_pos"": 77}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 111, ""end_pos"": 116}, {""text"": ""bentley"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 161, ""end_pos"": 168}]"
+502,"what is going on with you?",[]
+503,"tell me from the papaok what kind of ehehe to take?",[]
+504,"Vladislav threw me","[{""text"": ""Vladislav"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 9}]"
+505,"Will you make an assembly for the cb1 group?",[]
+506,"what&#39;s up with dove?",[]
+507,"I don&#39;t see him online",[]
+508,"For cb1 or o22?",[]
+509,"ask him to write to me",[]
+510,"o23",[]
+511,"cb1 and o23",[]
+512,"""hi",[]
+513,"""it usually happens later",[]
+514,"""[10:55:25]<Stern> you&#39;re here? [10:56:42]<defender> yes [10:57:10]<defender> the main gaskets died at once [10:57:16]<defender> through emer restored everything [10:57:20]<Stern> all day ? [10:57:25]<defender> now mango has issued routers","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 17}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 47, ""end_pos"": 55}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 72, ""end_pos"": 80}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 123, ""end_pos"": 131}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 177, ""end_pos"": 182}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 205, ""end_pos"": 213}]"
+515,"mors should load every day in the second admin area",[]
+516,"write on it every 2 hours what happens",[]
+517,"Good",[]
