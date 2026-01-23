@@ -16,12 +16,12 @@ id,text,gt_entities
 14,"Hey",[]
 15,"I understand the trick",[]
 16,"I&#39;ll clarify by group",[]
-17,"Please do mor114","[{""text"": ""mor114"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 10, ""end_pos"": 16}]"
+17,"Please do mor114",[]
 18,"Ok",[]
 19,"Morse trick crypto?","[{""text"": ""Morse"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 5}]"
 20,"Yes",[]
 21,"How many versions?",[]
-22,"mor114 now Hof will flood","[{""text"": ""mor114"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 0, ""end_pos"": 6}]"
+22,"mor114 now Hof will flood",[]
 23,"Do not know",[]
 24,"Didn&#39;t specify how much",[]
 25,"Let&#39;s make 3 versions. 2 with different hashes and 1 with a different stub. Norm?",[]
@@ -52,27 +52,27 @@ id,text,gt_entities
 50,"plfhjdf",[]
 51,"healthy",[]
 52,"Hey",[]
-53,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
-54,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+53,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""URL"", ""start_pos"": 11, ""end_pos"": 44}]"
+54,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 54}]"
 55,"Pass: FDWQASAFDASAFDASADF""",[]
 56,"Wait",[]
 57,"Hey",[]
-58,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
-59,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+58,"""Download: https://qaz.im/load/r4QGkk/ty2Bht","[{""text"": ""https://qaz.im/load/r4QGkk/ty2Bht"", ""type"": ""URL"", ""start_pos"": 11, ""end_pos"": 44}]"
+59,Delete: https://qaz.im/index.php?a=delete&q=2099840957,"[{""text"": ""https://qaz.im/index.php?a=delete&q=2099840957"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 54}]"
 60,"Pass: FDWQASAFDASAFDASADF""",[]
 61,"Wait",[]
 62,"Hello. Can I connect to that Windows Server 2019 VM?",[]
-63,"""<arbadakarba2000>hello [14:25:17]<volhvb> There was a problem with serts. Can&#39;t install [14:25:56]<arbadakarba2000> I can install","[{""text"": ""arbadakarba2000"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 2, ""end_pos"": 17}, {""text"": ""volhvb"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 35, ""end_pos"": 41}, {""text"": ""arbadakarba2000"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 104, ""end_pos"": 119}]"
+63,"""<arbadakarba2000>hello [14:25:17]<volhvb> There was a problem with serts. Can&#39;t install [14:25:56]<arbadakarba2000> I can install",[]
 64,"Hey",[]
 65,"I&#39;m here",[]
 66,"""sorry",[]
 67,"[21:39:30]<electronic> when does the target happen on the network? when is the best time to get him?",[]
-68,"[21:39:56]<Stern> usually always online [21:40:04]<Stern> I think on Monday it will be [21:40:17]<electronic> usually during the day? [21:40:27]<Stern> yes [21:40:27]<electronic> he is always in my office for some reason [21:40:36]<electronic> OK","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 11, ""end_pos"": 16}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 51, ""end_pos"": 56}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 98, ""end_pos"": 108}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 145, ""end_pos"": 150}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 232, ""end_pos"": 242}]"
+68,"[21:39:56]<Stern> usually always online [21:40:04]<Stern> I think on Monday it will be [21:40:17]<electronic> usually during the day? [21:40:27]<Stern> yes [21:40:27]<electronic> he is always in my office for some reason [21:40:36]<electronic> OK",[]
 69,"waiting for you",[]
 70,"Hey",[]
 71,"tor hangs constantly lately",[]
 72,"let&#39;s write",[]
-73,"""[08:28:10]<electronic> hello [08:28:11]<electronic> I&#39;m here [08:29:04]<electronic> sorry","[{""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 22}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 41, ""end_pos"": 51}, {""text"": ""electronic"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 77, ""end_pos"": 87}]"
+73,"""[08:28:10]<electronic> hello [08:28:11]<electronic> I&#39;m here [08:29:04]<electronic> sorry",[]
 74,"""we&#39;ll decide everything",[]
 75,"Hey",[]
 76,"there were large shops of 200-500 ml",[]
@@ -209,8 +209,8 @@ id,text,gt_entities
 207,"or you",[]
 208,"who of you",[]
 209,"drop your emails for a couple of builds",[]
-210,"""Download: https://qaz.im/load/TA3bnN/7ebbZY","[{""text"": ""https://qaz.im/load/TA3bnN/7ebbZY"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
-211,"Delete: https://qaz.im/index.php?a=delete&q=1223188473""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1223188473\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 55}]"
+210,"""Download: https://qaz.im/load/TA3bnN/7ebbZY","[{""text"": ""https://qaz.im/load/TA3bnN/7ebbZY"", ""type"": ""URL"", ""start_pos"": 11, ""end_pos"": 44}]"
+211,"Delete: https://qaz.im/index.php?a=delete&q=1223188473""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1223188473"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 54}]"
 212,"Password 123",[]
 213,"Hey",[]
 214,"we are from Wednesday",[]
@@ -236,8 +236,8 @@ id,text,gt_entities
 234,"id must have the correct format specified in the TOR",[]
 235,"queries can be debugged in Postman",[]
 236,"d7Kb4bMa &amp; ks @ fkRNso",[]
-237,"""Download: https://qaz.im/load/KQfTKt/A6Ns5f","[{""text"": ""https://qaz.im/load/KQfTKt/A6Ns5f"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
-238,"Delete: https://qaz.im/index.php?a=delete&q=369478002""","[{""text"": ""https://qaz.im/index.php?a=delete&q=369478002\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+237,"""Download: https://qaz.im/load/KQfTKt/A6Ns5f","[{""text"": ""https://qaz.im/load/KQfTKt/A6Ns5f"", ""type"": ""URL"", ""start_pos"": 11, ""end_pos"": 44}]"
+238,"Delete: https://qaz.im/index.php?a=delete&q=369478002""","[{""text"": ""https://qaz.im/index.php?a=delete&q=369478002"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 53}]"
 239,"Here is an example request and response",[]
 240,"""upon request",[]
 241,"What about your work plans?",[]
@@ -245,12 +245,12 @@ id,text,gt_entities
 243,"If you can&#39;t estimate the deadlines for any unclear points from the TOR - send your questions on these points.",[]
 244,"plan",[]
 245,"a.4Wy8n@n&yMt:3)f",[]
-246,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 10, ""end_pos"": 43}]"
-247,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 53}]"
+246,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""URL"", ""start_pos"": 10, ""end_pos"": 43}]"
+247,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 53}]"
 248,"plan",[]
 249,"a.4Wy8n@n&yMt:3)f",[]
-250,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 10, ""end_pos"": 43}]"
-251,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 53}]"
+250,"Download: https://qaz.im/load/zd2yKd/b2NEZE","[{""text"": ""https://qaz.im/load/zd2yKd/b2NEZE"", ""type"": ""URL"", ""start_pos"": 10, ""end_pos"": 43}]"
+251,"Delete: https://qaz.im/index.php?a=delete&q=743793047","[{""text"": ""https://qaz.im/index.php?a=delete&q=743793047"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 53}]"
 252,"""Sorry",[]
 253,")",[]
 254,"think",[]
@@ -334,7 +334,7 @@ id,text,gt_entities
 332,"let&#39;s see how they dance",[]
 333,"Def. starts to demolish after injection in explorer",[]
 334,"""Hello",[]
-335,"""[19:30:54]<Ali> Hello [19:31:09]<Ali> [17:38:36]<steller> Hello. The site has been raised. https://217.12.203.220. You need to take the password from the talar","[{""text"": ""Ali"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 15}, {""text"": ""Ali"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 34, ""end_pos"": 37}, {""text"": ""steller"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 50, ""end_pos"": 57}, {""text"": ""https://217.12.203.220"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 92, ""end_pos"": 114}]"
+335,"""[19:30:54]<Ali> Hello [19:31:09]<Ali> [17:38:36]<steller> Hello. The site has been raised. https://217.12.203.220. You need to take the password from the talar","[{""text"": ""https://217.12.203.220"", ""type"": ""URL"", ""start_pos"": 92, ""end_pos"": 114}]"
 336,"Hello. Sorry ) Confused ) This is mavemat<mavemat@q3mcco35auwcstmt.onion>","[{""text"": ""mavemat@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 42, ""end_pos"": 72}]"
 337,"found vpsku which fonila",[]
 338,"""was in a recent config",[]
@@ -373,12 +373,12 @@ id,text,gt_entities
 371,"unlocked the old mail",[]
 372,"there are several applicants during the day they will send a cart",[]
 373,"""There",[]
-374,"here is the first Sky01z cart","[{""text"": ""Sky01z"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 18, ""end_pos"": 24}]"
+374,"here is the first Sky01z cart",[]
 375,"Yes",[]
 376,"FIDKJhslkdjhgliudghkjdfhlgksj",[]
 377,"""",[]
-378,    Download: https://qaz.im/load/9B2ATe/aa7shR   ,"[{""text"": ""https://qaz.im/load/9B2ATe/aa7shR"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 14, ""end_pos"": 47}]"
-379,"    Delete: https://qaz.im/index.php?a=delete&q=2063358067""","[{""text"": ""https://qaz.im/index.php?a=delete&q=2063358067\"""", ""type"": ""WEB_RESOURCE"", ""start_pos"": 12, ""end_pos"": 59}]"
+378,    Download: https://qaz.im/load/9B2ATe/aa7shR   ,"[{""text"": ""https://qaz.im/load/9B2ATe/aa7shR"", ""type"": ""URL"", ""start_pos"": 14, ""end_pos"": 47}]"
+379,"    Delete: https://qaz.im/index.php?a=delete&q=2063358067""","[{""text"": ""https://qaz.im/index.php?a=delete&q=2063358067"", ""type"": ""URL"", ""start_pos"": 12, ""end_pos"": 58}]"
 380,"All cryptos for yesterday",[]
 381,"""mavemat@q3mcco35auwcstmt.onion Hello","[{""text"": ""mavemat@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 1, ""end_pos"": 31}]"
 382,"Hi good",[]
@@ -386,7 +386,7 @@ id,text,gt_entities
 384,"""Well",[]
 385,"doing",[]
 386,"""[10:41:04]<kaktus@q3mcco35auwcstmt.onion> [08.10.2020 20:20:02]<dove> listen","[{""text"": ""kaktus@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 12, ""end_pos"": 41}, {""text"": ""dove"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 65, ""end_pos"": 69}]"
-387,"""hello https://qaz.im/load/hQbHN9/e3ZdGz all that is on the TP links","[{""text"": ""https://qaz.im/load/hQbHN9/e3ZdGz"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 7, ""end_pos"": 40}]"
+387,"""hello https://qaz.im/load/hQbHN9/e3ZdGz all that is on the TP links","[{""text"": ""https://qaz.im/load/hQbHN9/e3ZdGz"", ""type"": ""URL"", ""start_pos"": 7, ""end_pos"": 40}]"
 388,"Hey",[]
 389,"""hello",[]
 390,"Do another build?",[]
@@ -407,7 +407,7 @@ id,text,gt_entities
 405,"""Most likely this is a file from the crypt",[]
 406,"""Ask the one who did the crypt",[]
 407,"got it ok",[]
-408,"""<mushroom>Most likely this is a file from the crypt","[{""text"": ""mushroom"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 2, ""end_pos"": 10}]"
+408,"""<mushroom>Most likely this is a file from the crypt",[]
 409,"I don&#39;t write in tempo",[]
 410,"""I do not write any files to disks",[]
 411,"""<deploy@q3mcco35auwcstmt.onion>I don&#39;t write anything in tempo [15:22:40]<deploy@q3mcco35auwcstmt.onion> I do not write any files to disks","[{""text"": ""deploy@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 2, ""end_pos"": 31}, {""text"": ""deploy@q3mcco35auwcstmt.onion"", ""type"": ""EMAIL"", ""start_pos"": 79, ""end_pos"": 108}]"
@@ -433,8 +433,8 @@ id,text,gt_entities
 431,52.34.17.37,"[{""text"": ""52.34.17.37"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 11}]"
 432,54.89.230.95,"[{""text"": ""54.89.230.95"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 12}]"
 433,"35.164.230.208""","[{""text"": ""35.164.230.208"", ""type"": ""IP"", ""start_pos"": 0, ""end_pos"": 14}]"
-434,"""Download: https://qaz.im/load/AtZebR/ZfT5Qe","[{""text"": ""https://qaz.im/load/AtZebR/ZfT5Qe"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 11, ""end_pos"": 44}]"
-435,"Delete: https://qaz.im/index.php?a=delete&q=1979992415""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1979992415"", ""type"": ""WEB_RESOURCE"", ""start_pos"": 8, ""end_pos"": 54}]"
+434,"""Download: https://qaz.im/load/AtZebR/ZfT5Qe","[{""text"": ""https://qaz.im/load/AtZebR/ZfT5Qe"", ""type"": ""URL"", ""start_pos"": 11, ""end_pos"": 44}]"
+435,"Delete: https://qaz.im/index.php?a=delete&q=1979992415""","[{""text"": ""https://qaz.im/index.php?a=delete&q=1979992415"", ""type"": ""URL"", ""start_pos"": 8, ""end_pos"": 54}]"
 436,"password 22221111",[]
 437,"++",[]
 438,"and the same for you",[]
@@ -500,7 +500,7 @@ id,text,gt_entities
 498,"Ghbdtn",[]
 499,"hi there jabber checker fell off at the needle yesterday",[]
 500,"2 admin was not working yesterday",[]
-501,"[10:52:46]<Stern> he hasn&#39;t loaded anywhere for a week [10:52:51]<bentley> I&#39;ll clarify now [10:54:04]<Stern> what happened to him yesterday? [10:54:36]<bentley> 2 admin was not working yesterday","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 11, ""end_pos"": 16}, {""text"": ""bentley"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 70, ""end_pos"": 77}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 111, ""end_pos"": 116}, {""text"": ""bentley"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 161, ""end_pos"": 168}]"
+501,"[10:52:46]<Stern> he hasn&#39;t loaded anywhere for a week [10:52:51]<bentley> I&#39;ll clarify now [10:54:04]<Stern> what happened to him yesterday? [10:54:36]<bentley> 2 admin was not working yesterday",[]
 502,"what is going on with you?",[]
 503,"tell me from the papaok what kind of ehehe to take?",[]
 504,"Vladislav threw me","[{""text"": ""Vladislav"", ""type"": ""PERSON"", ""start_pos"": 0, ""end_pos"": 9}]"
@@ -513,7 +513,7 @@ id,text,gt_entities
 511,"cb1 and o23",[]
 512,"""hi",[]
 513,"""it usually happens later",[]
-514,"""[10:55:25]<Stern> you&#39;re here? [10:56:42]<defender> yes [10:57:10]<defender> the main gaskets died at once [10:57:16]<defender> through emer restored everything [10:57:20]<Stern> all day ? [10:57:25]<defender> now mango has issued routers","[{""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 12, ""end_pos"": 17}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 47, ""end_pos"": 55}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 72, ""end_pos"": 80}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 123, ""end_pos"": 131}, {""text"": ""Stern"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 177, ""end_pos"": 182}, {""text"": ""defender"", ""type"": ""USER_ACCOUNT"", ""start_pos"": 205, ""end_pos"": 213}]"
+514,"""[10:55:25]<Stern> you&#39;re here? [10:56:42]<defender> yes [10:57:10]<defender> the main gaskets died at once [10:57:16]<defender> through emer restored everything [10:57:20]<Stern> all day ? [10:57:25]<defender> now mango has issued routers",[]
 515,"mors should load every day in the second admin area",[]
 516,"write on it every 2 hours what happens",[]
 517,"Good",[]
